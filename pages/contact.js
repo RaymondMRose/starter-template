@@ -126,6 +126,6 @@ Page.variables = () => {
 export function getStaticProps(ctx) {
   return getNextStaticProps(ctx, {
     Page,
-    props: { title: "Contact Us" },
+    props: { title: "Contact" },
   });
 }

@@ -9,7 +9,7 @@ import {
   StyledFormikSelect,
   StyledFormikTextarea,
   StyledNameInput,
-} from "../../../assets/form-helper";
+} from "../../FormHelper/FormHelper";
 
 const interests = [
   { label: "Interest 1", value: "interest one" },
