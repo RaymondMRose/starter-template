@@ -13,10 +13,10 @@ export default function DesktopNav({ menuItems }) {
   return (
     <ul
       typeof="nav"
-      className="flex items-center justify-between p-6 lg:px-8"
+      className="hidden lg:flex items-center justify-between p-6 lg:px-8"
       aria-label="Global"
     >
-      <div className="hidden lg:flex lg:gap-x-12">
+      <div className="flex lg:gap-x-12">
         {hierarchicalMenuItems.map((item) => {
           const { id, path, label, children } = item;
 
