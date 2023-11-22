@@ -28,7 +28,7 @@ export default function DesktopNav({ menuItems }) {
           return (
             <li
               key={id}
-              className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300"
+              className="text-sm font-semibold leading-6 text-gray-900"
             >
               {children.length ? (
                 <MenuDropdown parentLabel={label} children={children} />
@@ -36,7 +36,7 @@ export default function DesktopNav({ menuItems }) {
                 <Link
                   key={id}
                   href={path}
-                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300"
+                  className="text-sm font-semibold leading-6 text-gray-90"
                 >
                   {label}
                 </Link>
@@ -96,14 +96,14 @@ const MenuDropdown = ({ parentLabel, children }) => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="origin-bottom-center top-7 absolute w-48 shadow-lg rounded-sm bg-gray-200 dark:bg-gray-800 opacity-95 focus:outline-none z-50 border-2 border-gray-500">
+        <Menu.Items className="origin-bottom-center top-7 absolute w-48 shadow-lg rounded-sm bg-gray-200 opacity-95 focus:outline-none z-50 border-2 border-gray-500">
           {children.map((item) => (
             <Menu.Item key={"header-" + item.id}>
               {({ active }) => (
                 <a
                   href={item.path}
                   className={classNames(
-                    active ? "bg-gray-300 dark:bg-gray-700" : "",
+                    active ? "bg-gray-300" : "",
                     "z-50 block py-2 px-2 text-base font-medium text-inherit"
                   )}
                 >

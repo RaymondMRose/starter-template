@@ -20,7 +20,7 @@ export default function Page(props) {
     return (
       <div className="bg-gray-700 w-screen h-screen relative">
         <div className="absolute left-1/2 top-1/2">
-          <Spinner className="h-16 w-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" />
+          <Spinner className="h-16 w-16 mr-2 text-gray-200 animate-spin fill-blue-600" />
         </div>
       </div>
     );

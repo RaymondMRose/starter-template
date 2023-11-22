@@ -22,7 +22,10 @@ export default function Header({ menuItems }) {
       <div className="flex flex-row w-11/12 mx-auto justify-between">
         {/* Icon and Home Button */}
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5 flex flex-col justify-center items-center">
+          <a
+            href="#"
+            className="-m-1.5 p-1.5 flex flex-col justify-center items-center"
+          >
             <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
@@ -44,14 +47,10 @@ export default function Header({ menuItems }) {
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6 dark:text-gray-400" aria-hidden="true" />
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-
-          {/* Light/Dark Toggle */}
-          <ThemeToggle />
         </div>
-
       </div>
       <Dialog
         as="div"
@@ -60,7 +59,7 @@ export default function Header({ menuItems }) {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -76,17 +75,17 @@ export default function Header({ menuItems }) {
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6 dark:text-gray-400" aria-hidden="true" />
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10 dark:divide-gray-300">
+            <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {menuItems.map((item) => (
                   <a
                     key={item.id}
                     href={item.path}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-500/60"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-500/60"
                   >
                     {item.label}
                   </a>
@@ -95,7 +94,7 @@ export default function Header({ menuItems }) {
               <div className="py-6">
                 <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-500/60"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-500/60"
                 >
                   Log in
                 </a>
