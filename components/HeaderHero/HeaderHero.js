@@ -1,10 +1,10 @@
-import Header2 from "../Header/Header2";
+import Header from "../Header/Header";
 
 export default function HeaderHero({ menuItems }) {
-  console.log(menuItems);
+  // console.log(menuItems);
   return (
-    <div className="bg-white">
-      <Header2 menuItems={menuItems} />
+    <>
+      <Header menuItems={menuItems} />
 
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
@@ -67,6 +67,6 @@ export default function HeaderHero({ menuItems }) {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }

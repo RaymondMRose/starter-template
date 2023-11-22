@@ -1,14 +1,14 @@
+import { gql } from "@apollo/client";
 import { flatListToHierarchical } from "@faustwp/core";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import { useState } from "react";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
-export default function NavigationMenu2({ menuItems }) {
+export default function DesktopNav({ menuItems }) {
   const hierarchicalMenuItems = flatListToHierarchical(menuItems);
 
-  console.log(hierarchicalMenuItems);
+  // console.log(hierarchicalMenuItems);
 
   return (
     <ul
@@ -26,14 +26,17 @@ export default function NavigationMenu2({ menuItems }) {
           }
 
           return (
-            <li className="text-sm font-semibold leading-6 text-gray-900">
+            <li
+              key={id}
+              className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300"
+            >
               {children.length ? (
                 <MenuDropdown parentLabel={label} children={children} />
               ) : (
                 <Link
                   key={id}
                   href={path}
-                  className="text-sm font-semibold leading-6 text-gray-900"
+                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300"
                 >
                   {label}
                 </Link>
@@ -77,13 +80,10 @@ const MenuDropdown = ({ parentLabel, children }) => {
     >
       <div>
         <Menu.Button className="flex-row inline-flex bg-transparent">
-          <span className="flex-row text-sm font-semibold leading-6 text-gray-900">
+          <span className="flex-row text-sm font-semibold leading-6 text-inherit">
             {parentLabel}
           </span>
-          <ChevronDownIcon
-            className="h-5 w-5 text-gray-700 mt-1 ml-1"
-            aria-hidden="true"
-          />
+          <ChevronDownIcon className="h-5 w-5 mt-1 ml-1" aria-hidden="true" />
         </Menu.Button>
       </div>
       <Transition
@@ -96,15 +96,15 @@ const MenuDropdown = ({ parentLabel, children }) => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="origin-bottom-center top-7 absolute w-48 shadow-lg rounded-sm bg-gray-300 opacity-95 focus:outline-none z-50 border-2 border-gray-500">
+        <Menu.Items className="origin-bottom-center top-7 absolute w-48 shadow-lg rounded-sm bg-gray-200 dark:bg-gray-800 opacity-95 focus:outline-none z-50 border-2 border-gray-500">
           {children.map((item) => (
             <Menu.Item key={"header-" + item.id}>
               {({ active }) => (
                 <a
                   href={item.path}
                   className={classNames(
-                    active ? "bg-gray-500" : "",
-                    "z-50 block py-2 px-2 text-base font-medium text-gray-800"
+                    active ? "bg-gray-300 dark:bg-gray-700" : "",
+                    "z-50 block py-2 px-2 text-base font-medium text-inherit"
                   )}
                 >
                   {item.label}
@@ -116,4 +116,21 @@ const MenuDropdown = ({ parentLabel, children }) => {
       </Transition>
     </Menu>
   );
+};
+
+DesktopNav.fragments = {
+  entry: gql`
+    fragment DesktopNavMenuItemFragment on MenuItem {
+      id
+      path
+      label
+      parentId
+      cssClasses
+      menu {
+        node {
+          name
+        }
+      }
+    }
+  `,
 };
